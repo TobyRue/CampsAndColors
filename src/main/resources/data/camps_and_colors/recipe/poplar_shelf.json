@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "shelf",
   "key": {
-    "#": "poplar_trees_and_more:stripped_poplar_log"
+    "#": "camps_and_colors:stripped_poplar_log"
   },
   "pattern": [
     "###",
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 6,
-    "id": "poplar_trees_and_more:poplar_shelf"
+    "id": "camps_and_colors:poplar_shelf"
   }
 }

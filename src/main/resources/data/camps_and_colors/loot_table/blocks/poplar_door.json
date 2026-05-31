@@ -13,14 +13,14 @@
           "type": "minecraft:item",
           "conditions": [
             {
-              "block": "poplar_trees_and_more:poplar_door",
+              "block": "camps_and_colors:poplar_door",
               "condition": "minecraft:block_state_property",
               "properties": {
                 "half": "lower"
               }
             }
           ],
-          "name": "poplar_trees_and_more:poplar_door"
+          "name": "camps_and_colors:poplar_door"
         }
       ],
       "rolls": 1.0

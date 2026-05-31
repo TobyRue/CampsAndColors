@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "hanging_sign",
   "key": {
-    "#": "poplar_trees_and_more:poplar_planks",
+    "#": "camps_and_colors:poplar_planks",
     "X": "minecraft:iron_chain"
   },
   "pattern": [
@@ -13,6 +13,6 @@
   ],
   "result": {
     "count": 6,
-    "id": "poplar_trees_and_more:poplar_hanging_sign"
+    "id": "camps_and_colors:poplar_hanging_sign"
   }
 }

@@ -4,9 +4,9 @@
   "group": "chest_boat",
   "ingredients": [
     "minecraft:chest",
-    "poplar_trees_and_more:poplar_planks"
+    "camps_and_colors:poplar_planks"
   ],
   "result": {
-    "id": "poplar_trees_and_more:poplar_chest_boat"
+    "id": "camps_and_colors:poplar_chest_boat"
   }
 }

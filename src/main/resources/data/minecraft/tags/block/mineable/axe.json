@@ -1,18 +1,18 @@
 {
   "values": [
-    "poplar_trees_and_more:poplar_log",
-    "poplar_trees_and_more:poplar_wood",
-    "poplar_trees_and_more:stripped_poplar_log",
-    "poplar_trees_and_more:stripped_poplar_wood",
-    "poplar_trees_and_more:poplar_planks",
-    "poplar_trees_and_more:poplar_stairs",
-    "poplar_trees_and_more:poplar_slab",
-    "poplar_trees_and_more:poplar_fence",
-    "poplar_trees_and_more:poplar_fence_gate",
-    "poplar_trees_and_more:poplar_door",
-    "poplar_trees_and_more:poplar_trapdoor",
-    "poplar_trees_and_more:poplar_button",
-    "poplar_trees_and_more:poplar_pressure_plate",
-    "poplar_trees_and_more:poplar_shelf"
+    "camps_and_colors:poplar_log",
+    "camps_and_colors:poplar_wood",
+    "camps_and_colors:stripped_poplar_log",
+    "camps_and_colors:stripped_poplar_wood",
+    "camps_and_colors:poplar_planks",
+    "camps_and_colors:poplar_stairs",
+    "camps_and_colors:poplar_slab",
+    "camps_and_colors:poplar_fence",
+    "camps_and_colors:poplar_fence_gate",
+    "camps_and_colors:poplar_door",
+    "camps_and_colors:poplar_trapdoor",
+    "camps_and_colors:poplar_button",
+    "camps_and_colors:poplar_pressure_plate",
+    "camps_and_colors:poplar_shelf"
   ]
 }

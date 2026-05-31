@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "poplar_trees_and_more:poplar_wood"
+            "items": "camps_and_colors:poplar_wood"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "poplar_trees_and_more:charcoal_from_poplar_wood"
+        "recipe": "camps_and_colors:charcoal_from_poplar_wood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "poplar_trees_and_more:charcoal_from_poplar_wood"
+      "camps_and_colors:charcoal_from_poplar_wood"
     ]
   }
 }

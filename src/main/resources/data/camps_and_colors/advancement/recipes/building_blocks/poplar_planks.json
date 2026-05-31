@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "poplar_trees_and_more:poplar_planks"
+        "recipe": "camps_and_colors:poplar_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "poplar_trees_and_more:poplar_planks"
+      "camps_and_colors:poplar_planks"
     ]
   }
 }

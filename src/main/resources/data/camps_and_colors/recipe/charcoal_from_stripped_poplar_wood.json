@@ -3,7 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": "poplar_trees_and_more:stripped_poplar_wood",
+  "ingredient": "camps_and_colors:stripped_poplar_wood",
   "result": {
     "id": "minecraft:charcoal"
   }

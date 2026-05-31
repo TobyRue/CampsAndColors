@@ -2,6 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:light_gray_concrete",
   "result": {
-    "id": "poplar_trees_and_more:light_gray_concrete_stairs"
+    "id": "camps_and_colors:light_gray_concrete_stairs"
   }
 }

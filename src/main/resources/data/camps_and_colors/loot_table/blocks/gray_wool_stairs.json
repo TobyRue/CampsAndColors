@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "poplar_trees_and_more:gray_wool_stairs"
+          "name": "camps_and_colors:gray_wool_stairs"
         }
       ],
       "rolls": 1.0

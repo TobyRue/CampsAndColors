@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "poplar_trees_and_more:poplar_fence"
+          "name": "camps_and_colors:poplar_fence"
         }
       ],
       "rolls": 1.0

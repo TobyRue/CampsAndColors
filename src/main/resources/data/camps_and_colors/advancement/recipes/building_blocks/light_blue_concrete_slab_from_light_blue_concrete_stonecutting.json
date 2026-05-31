@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "poplar_trees_and_more:light_blue_concrete_slab_from_light_blue_concrete_stonecutting"
+        "recipe": "camps_and_colors:light_blue_concrete_slab_from_light_blue_concrete_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "poplar_trees_and_more:light_blue_concrete_slab_from_light_blue_concrete_stonecutting"
+      "camps_and_colors:light_blue_concrete_slab_from_light_blue_concrete_stonecutting"
     ]
   }
 }

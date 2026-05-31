@@ -2,6 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:magenta_concrete",
   "result": {
-    "id": "poplar_trees_and_more:magenta_concrete_stairs"
+    "id": "camps_and_colors:magenta_concrete_stairs"
   }
 }

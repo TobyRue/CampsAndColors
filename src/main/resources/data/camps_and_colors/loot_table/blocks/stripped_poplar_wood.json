@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "poplar_trees_and_more:stripped_poplar_wood"
+          "name": "camps_and_colors:stripped_poplar_wood"
         }
       ],
       "rolls": 1.0

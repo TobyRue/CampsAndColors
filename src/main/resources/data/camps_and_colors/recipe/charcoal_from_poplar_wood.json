@@ -3,7 +3,7 @@
   "category": "blocks",
   "cookingtime": 200,
   "experience": 0.1,
-  "ingredient": "poplar_trees_and_more:poplar_wood",
+  "ingredient": "camps_and_colors:poplar_wood",
   "result": {
     "id": "minecraft:charcoal"
   }

@@ -3,13 +3,13 @@
   "category": "misc",
   "group": "boat",
   "key": {
-    "#": "poplar_trees_and_more:poplar_planks"
+    "#": "camps_and_colors:poplar_planks"
   },
   "pattern": [
     "# #",
     "###"
   ],
   "result": {
-    "id": "poplar_trees_and_more:poplar_boat"
+    "id": "camps_and_colors:poplar_boat"
   }
 }
