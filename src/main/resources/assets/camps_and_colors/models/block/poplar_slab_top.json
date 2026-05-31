@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "camps_and_colors:block/poplar_planks",
+    "side": "camps_and_colors:block/poplar_planks",
+    "top": "camps_and_colors:block/poplar_planks"
+  }
+}

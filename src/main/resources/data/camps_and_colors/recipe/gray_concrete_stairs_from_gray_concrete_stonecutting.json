@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:gray_concrete",
+  "result": {
+    "id": "poplar_trees_and_more:gray_concrete_stairs"
+  }
+}

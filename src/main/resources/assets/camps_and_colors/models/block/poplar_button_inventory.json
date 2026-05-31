@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "camps_and_colors:block/poplar_planks"
+  }
+}

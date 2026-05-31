@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "textures": {
+    "bottom": "camps_and_colors:block/poplar_door_bottom",
+    "top": "camps_and_colors:block/poplar_door_top"
+  }
+}

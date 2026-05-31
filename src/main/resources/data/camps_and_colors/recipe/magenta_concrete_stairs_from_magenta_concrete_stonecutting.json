@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:magenta_concrete",
+  "result": {
+    "id": "poplar_trees_and_more:magenta_concrete_stairs"
+  }
+}

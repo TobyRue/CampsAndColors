@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_poplar_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "poplar_trees_and_more:poplar_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "poplar_trees_and_more:charcoal_from_poplar_log"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_poplar_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "poplar_trees_and_more:charcoal_from_poplar_log"
+    ]
+  }
+}

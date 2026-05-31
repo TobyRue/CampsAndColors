@@ -1,0 +1,38 @@
+{
+	"schemaVersion": 1,
+	"id": "camps_and_colors",
+	"version": "${version}",
+	"name": "Camps & Colors",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/camps_and_colors/icon.png",
+	"environment": "*",
+	"accessWidener" : "camps_and_colors.classTweaker",
+	"entrypoints": {
+		"main": [
+			"io.github.tobyrue.camps_and_colors.CampsAndColors"
+		],
+		"client": [
+			"io.github.tobyrue.camps_and_colors.client.CampsAndColorsClient"
+		],
+		"fabric-datagen": [
+          "io.github.tobyrue.camps_and_colors.PoplarTreesAndMoreDataGenerator"
+		]
+	},
+	"mixins": [
+		"camps_and_colors.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

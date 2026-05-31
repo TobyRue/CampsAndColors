@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "poplar_trees_and_more:stripped_poplar_log",
+  "result": {
+    "id": "minecraft:charcoal"
+  }
+}

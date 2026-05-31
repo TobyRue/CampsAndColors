@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_shelf_left",
+  "textures": {
+    "all": "camps_and_colors:block/poplar_shelf",
+    "particle": "camps_and_colors:block/stripped_poplar_log"
+  }
+}

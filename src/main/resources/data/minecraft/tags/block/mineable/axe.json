@@ -1,0 +1,18 @@
+{
+  "values": [
+    "poplar_trees_and_more:poplar_log",
+    "poplar_trees_and_more:poplar_wood",
+    "poplar_trees_and_more:stripped_poplar_log",
+    "poplar_trees_and_more:stripped_poplar_wood",
+    "poplar_trees_and_more:poplar_planks",
+    "poplar_trees_and_more:poplar_stairs",
+    "poplar_trees_and_more:poplar_slab",
+    "poplar_trees_and_more:poplar_fence",
+    "poplar_trees_and_more:poplar_fence_gate",
+    "poplar_trees_and_more:poplar_door",
+    "poplar_trees_and_more:poplar_trapdoor",
+    "poplar_trees_and_more:poplar_button",
+    "poplar_trees_and_more:poplar_pressure_plate",
+    "poplar_trees_and_more:poplar_shelf"
+  ]
+}

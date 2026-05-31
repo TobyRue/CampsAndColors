@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "camps_and_colors:block/poplar_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "camps_and_colors:block/poplar_wood"
+    },
+    "axis=z": {
+      "model": "camps_and_colors:block/poplar_wood",
+      "x": 90
+    }
+  }
+}

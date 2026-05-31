@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "camps_and_colors:block/gray_wool_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/gray_wool"
+    },
+    "type=top": {
+      "model": "camps_and_colors:block/gray_wool_slab_top"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#minecraft:planks"
+  ],
+  "result": {
+    "count": 4,
+    "id": "poplar_trees_and_more:poplar_planks"
+  }
+}
