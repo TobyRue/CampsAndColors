@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "camps_and_colors:block/yellow_poplar_leaves"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "feature": "camps_and_colors:red_poplar_slender",
+  "placement": [
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "camps_and_colors:red_poplar_sapling",
+          "Properties": {
+            "stage": "0"
+          }
+        }
+      }
+    }
+  ]
+}

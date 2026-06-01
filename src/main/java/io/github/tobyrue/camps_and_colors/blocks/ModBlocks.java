@@ -1,7 +1,9 @@
 package io.github.tobyrue.camps_and_colors.blocks;
 
 import io.github.tobyrue.camps_and_colors.CampsAndColors;
+import io.github.tobyrue.camps_and_colors.ModConfiguredFeatures;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -10,6 +12,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -17,6 +20,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class ModBlocks {
@@ -134,6 +138,51 @@ public class ModBlocks {
     public static final Block POPLAR_SIGN = registerSign("poplar_sign", POPLAR_WALL_SIGN);
 
     public static final Block POPLAR_HANGING_SIGN = registerHangingSign("poplar_hanging_sign", POPLAR_WALL_HANGING_SIGN);
+
+
+    public static final Block RED_POPLAR_LEAVES = register("red_poplar_leaves", (p) -> new UntintedParticleLeavesBlock(0.1F, CampsAndColors.RED_POPLAR_LEAVES_PARTICLE, p), leavesProperties(SoundType.GRASS), true);
+    public static final Block ORANGE_POPLAR_LEAVES = register("orange_poplar_leaves", (p) -> new UntintedParticleLeavesBlock(0.1F, CampsAndColors.ORANGE_POPLAR_LEAVES_PARTICLE, p), leavesProperties(SoundType.GRASS), true);
+    public static final Block YELLOW_POPLAR_LEAVES = register("yellow_poplar_leaves", (p) -> new UntintedParticleLeavesBlock(0.1F, CampsAndColors.YELLOW_POPLAR_LEAVES_PARTICLE, p), leavesProperties(SoundType.GRASS), true);
+
+    public static final Block RED_POPLAR_SAPLING = register("red_poplar_sapling",
+            (p) -> new SaplingBlock(PoplarTreeGrower.RED, p),
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY),
+            true);
+
+
+    public static final Block ORANGE_POPLAR_SAPLING = register("orange_poplar_sapling",
+            (p) -> new SaplingBlock(PoplarTreeGrower.ORANGE, p),
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY),
+            true);
+
+    public static final Block YELLOW_POPLAR_SAPLING = register("yellow_poplar_sapling",
+            (p) -> new SaplingBlock(PoplarTreeGrower.YELLOW, p),
+            BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.GRASS)
+                    .pushReaction(PushReaction.DESTROY),
+            true);
+
+    public static BlockBehaviour.Properties leavesProperties(final SoundType soundType) {
+        return BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.2F).randomTicks().sound(soundType).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never).ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never);
+    }
+
+
     private static Block registerSign(String name, Block wallVariant) {
         ResourceKey<Block> blockKey = keyOfBlock(name);
         Block block = new StandingSignBlock(ModWoodTypes.POPLAR, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN).setId(blockKey));
@@ -185,5 +234,38 @@ public class ModBlocks {
             content.insertAfter(Items.PALE_OAK_SHELF, POPLAR_SHELF);
             content.insertAfter(Items.PALE_OAK_HANGING_SIGN, POPLAR_SIGN, POPLAR_HANGING_SIGN);
         });
+    }
+    public static class PoplarTreeGrower {
+        public static final TreeGrower RED = new TreeGrower(
+                "red_poplar",        // Name
+                0.0f,                // secondaryChance
+                Optional.empty(),    // megaTree
+                Optional.empty(),    // secondaryMegaTree
+                Optional.of(ModConfiguredFeatures.RED_POPLAR_ALL_VARIANTS),
+                Optional.empty(),    // secondaryTree
+                Optional.empty(),    // flowers
+                Optional.empty()     // secondaryFlowers
+        );
+        public static final TreeGrower ORANGE = new TreeGrower(
+                "orange_poplar",        // Name
+                0.0f,                // secondaryChance
+                Optional.empty(),    // megaTree
+                Optional.empty(),    // secondaryMegaTree
+                Optional.of(ModConfiguredFeatures.ORANGE_POPLAR_ALL_VARIANTS),
+                Optional.empty(),    // secondaryTree
+                Optional.empty(),    // flowers
+                Optional.empty()     // secondaryFlowers
+        );
+        public static final TreeGrower YELLOW = new TreeGrower(
+                "yellow_poplar",        // Name
+                0.0f,                // secondaryChance
+                Optional.empty(),    // megaTree
+                Optional.empty(),    // secondaryMegaTree
+                Optional.of(ModConfiguredFeatures.YELLOW_POPLAR_ALL_VARIANTS),
+                Optional.empty(),    // secondaryTree
+                Optional.empty(),    // flowers
+                Optional.empty()     // secondaryFlowers
+        );
+
     }
 }

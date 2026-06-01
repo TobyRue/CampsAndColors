@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "camps_and_colors:block/orange_poplar_leaves",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -4103936
+      }
+    ]
+  }
+}

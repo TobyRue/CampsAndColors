@@ -87,6 +87,13 @@
   "block.camps_and_colors.poplar_wall_sign": "Poplar Wall Sign",
   "block.camps_and_colors.poplar_hanging_sign": "Poplar Hanging Sign",
   "block.camps_and_colors.poplar_wall_hanging_sign": "Poplar Wall Hanging Sign",
+  "block.camps_and_colors.red_poplar_leaves": "Red Poplar Leaves",
+  "block.camps_and_colors.orange_poplar_leaves": "Orange Poplar Leaves",
+  "block.camps_and_colors.yellow_poplar_leaves": "Yellow Poplar Leaves",
+
+  "block.camps_and_colors.red_poplar_sapling": "Red Poplar Sapling",
+  "block.camps_and_colors.orange_poplar_sapling": "Orange Poplar Sapling",
+  "block.camps_and_colors.yellow_poplar_sapling": "Yellow Poplar Sapling",
 
   "item.camps_and_colors.poplar_sign": "Poplar Sign",
   "item.camps_and_colors.poplar_hanging_sign": "Poplar Hanging Sign",

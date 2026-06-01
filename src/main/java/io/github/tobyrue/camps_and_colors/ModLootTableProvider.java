@@ -1,5 +1,6 @@
 package io.github.tobyrue.camps_and_colors;
 
+import io.github.tobyrue.camps_and_colors.blocks.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
@@ -33,6 +34,7 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 //        dropSelf(ModBlocks.STRIPPED_POPLAR_WOOD);
 //        dropSelf(ModBlocks.POPLAR_STAIRS);
 //        dropSelf(ModBlocks.POPLAR_SHELF);
+//        dropSelf(ModBlocks.YELLOW_POPLAR_LEAVES);
 //
 //
 //        ModBlocks.WOOL_STAIRS.values().forEach(this::dropSelf);
@@ -42,5 +44,13 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 //        }
 //        ModBlocks.CONCRETE_STAIRS.values().forEach(this::dropSelf);
 //        ModBlocks.CONCRETE_SLAB.values().forEach(this::createSlabItemTable);
+
+        dropSelf(ModBlocks.RED_POPLAR_SAPLING);
+        dropSelf(ModBlocks.ORANGE_POPLAR_SAPLING);
+        dropSelf(ModBlocks.YELLOW_POPLAR_SAPLING);
+
+        createLeavesDrops(ModBlocks.RED_POPLAR_LEAVES, ModBlocks.RED_POPLAR_SAPLING, 0.1F);
+        createLeavesDrops(ModBlocks.ORANGE_POPLAR_LEAVES, ModBlocks.ORANGE_POPLAR_SAPLING, 0.1F);
+        createLeavesDrops(ModBlocks.YELLOW_POPLAR_LEAVES, ModBlocks.YELLOW_POPLAR_SAPLING, 0.1F);
     }
 }

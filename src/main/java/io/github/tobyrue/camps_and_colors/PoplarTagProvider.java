@@ -17,26 +17,27 @@ public class PoplarTagProvider extends FabricTagsProvider.BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider registries) {
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.POPLAR_LOG, ModBlocks.POPLAR_WOOD, ModBlocks.STRIPPED_POPLAR_LOG, ModBlocks.STRIPPED_POPLAR_WOOD)
-                .add(ModBlocks.POPLAR_PLANKS, ModBlocks.POPLAR_STAIRS, ModBlocks.POPLAR_SLAB)
-                .add(ModBlocks.POPLAR_FENCE, ModBlocks.POPLAR_FENCE_GATE, ModBlocks.POPLAR_DOOR, ModBlocks.POPLAR_TRAPDOOR)
-                .add(ModBlocks.POPLAR_BUTTON, ModBlocks.POPLAR_PRESSURE_PLATE, ModBlocks.POPLAR_SHELF);
-
-        var concreteBuilder = valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE);
-        for (Block b : ModBlocks.CONCRETE_STAIRS.values()) concreteBuilder.add(b);
-        for (Block b : ModBlocks.CONCRETE_SLAB.values()) concreteBuilder.add(b);
-
-        var woolBuilder = valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE);
-        for (Block b : ModBlocks.WOOL_STAIRS.values()) woolBuilder.add(b);
-        for (Block b : ModBlocks.WOOL_SLAB.values()) woolBuilder.add(b);
-
-        valueLookupBuilder(BlockTags.FENCES).add(ModBlocks.POPLAR_FENCE);
-        valueLookupBuilder(BlockTags.FENCE_GATES).add(ModBlocks.POPLAR_FENCE_GATE);
-
-        valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POPLAR_WALL_HANGING_SIGN);
-        valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POPLAR_HANGING_SIGN);
-        valueLookupBuilder(BlockTags.SIGNS).add(ModBlocks.POPLAR_SIGN).add(ModBlocks.POPLAR_WALL_SIGN);
-
+//        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
+//                .add(ModBlocks.POPLAR_LOG, ModBlocks.POPLAR_WOOD, ModBlocks.STRIPPED_POPLAR_LOG, ModBlocks.STRIPPED_POPLAR_WOOD)
+//                .add(ModBlocks.POPLAR_PLANKS, ModBlocks.POPLAR_STAIRS, ModBlocks.POPLAR_SLAB)
+//                .add(ModBlocks.POPLAR_FENCE, ModBlocks.POPLAR_FENCE_GATE, ModBlocks.POPLAR_DOOR, ModBlocks.POPLAR_TRAPDOOR)
+//                .add(ModBlocks.POPLAR_BUTTON, ModBlocks.POPLAR_PRESSURE_PLATE, ModBlocks.POPLAR_SHELF);
+//
+//        var concreteBuilder = valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE);
+//        for (Block b : ModBlocks.CONCRETE_STAIRS.values()) concreteBuilder.add(b);
+//        for (Block b : ModBlocks.CONCRETE_SLAB.values()) concreteBuilder.add(b);
+//
+//        var woolBuilder = valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE);
+//        for (Block b : ModBlocks.WOOL_STAIRS.values()) woolBuilder.add(b);
+//        for (Block b : ModBlocks.WOOL_SLAB.values()) woolBuilder.add(b);
+//
+//        valueLookupBuilder(BlockTags.FENCES).add(ModBlocks.POPLAR_FENCE);
+//        valueLookupBuilder(BlockTags.FENCE_GATES).add(ModBlocks.POPLAR_FENCE_GATE);
+//
+//        valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POPLAR_WALL_HANGING_SIGN);
+//        valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POPLAR_HANGING_SIGN);
+//        valueLookupBuilder(BlockTags.SIGNS).add(ModBlocks.POPLAR_SIGN).add(ModBlocks.POPLAR_WALL_SIGN);
+        valueLookupBuilder(BlockTags.SAPLINGS).add(ModBlocks.RED_POPLAR_SAPLING).add(ModBlocks.ORANGE_POPLAR_SAPLING).add(ModBlocks.YELLOW_POPLAR_SAPLING);
+        valueLookupBuilder(BlockTags.LEAVES).add(ModBlocks.RED_POPLAR_LEAVES).add(ModBlocks.ORANGE_POPLAR_LEAVES).add(ModBlocks.YELLOW_POPLAR_LEAVES);
     }
 }

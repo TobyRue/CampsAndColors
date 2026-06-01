@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "default": "camps_and_colors:orange_poplar_slender_placed",
+    "features": [
+      {
+        "chance": 0.15,
+        "feature": "camps_and_colors:orange_poplar_fancy_placed"
+      },
+      {
+        "chance": 0.6,
+        "feature": "camps_and_colors:orange_poplar_cherry_placed"
+      },
+      {
+        "chance": 0.3,
+        "feature": "camps_and_colors:orange_poplar_blob_placed"
+      },      {
+        "chance": 0.3,
+        "feature": "camps_and_colors:orange_poplar_slender_placed"
+      },
+      {
+        "chance": 0.3,
+        "feature": "camps_and_colors:orange_poplar_oak_placed"
+      }
+    ]
+  }
+}
