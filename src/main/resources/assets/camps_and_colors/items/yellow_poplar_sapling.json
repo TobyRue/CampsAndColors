@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "camps_and_colors:block/yellow_poplar_sapling"
+    "model": "camps_and_colors:item/yellow_poplar_sapling"
   }
 }

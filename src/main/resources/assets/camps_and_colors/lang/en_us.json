@@ -101,5 +101,8 @@
   "item.camps_and_colors.poplar_chest_boat": "Poplar Chest Boat",
 
   "entity.camps_and_colors.poplar_boat": "Poplar Boat",
-  "entity.camps_and_colors.poplar_chest_boat": "Poplar Chest Boat"
+  "entity.camps_and_colors.poplar_chest_boat": "Poplar Chest Boat",
+
+
+  "biome.camps_and_colors.dappled_forest": "Dappled Forest"
 }
