@@ -14,9 +14,7 @@ public class PoplarTreesAndMoreModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-        blockModelGenerators.createCrossBlock(ModBlocks.RED_POPLAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(ModBlocks.ORANGE_POPLAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
-        blockModelGenerators.createCrossBlock(ModBlocks.YELLOW_POPLAR_SAPLING, BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModelGenerators.createLeafLitter(ModBlocks.POPLAR_LEAF_LITTER);
     }
 
     @Override

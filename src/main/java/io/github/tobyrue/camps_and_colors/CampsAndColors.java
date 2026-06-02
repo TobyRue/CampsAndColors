@@ -2,6 +2,8 @@ package io.github.tobyrue.camps_and_colors;
 
 import io.github.tobyrue.camps_and_colors.blocks.ModBlockEntities;
 import io.github.tobyrue.camps_and_colors.blocks.ModBlocks;
+import io.github.tobyrue.camps_and_colors.feature.FallenPoplarLogFeature;
+import io.github.tobyrue.camps_and_colors.feature.ModFeatures;
 import io.github.tobyrue.camps_and_colors.items.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,6 +14,8 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,11 +30,13 @@ public class CampsAndColors implements ModInitializer {
 	public static final SimpleParticleType YELLOW_POPLAR_LEAVES_PARTICLE =
 			FabricParticleTypes.simple();
 
+
 	@Override
 	public void onInitialize() {
 		ModBlocks.initialize();
 		ModItems.initialize();
 		ModBlockEntities.initialize();
+		ModFeatures.registerFeatures();
 		StrippableBlockRegistry.register(ModBlocks.POPLAR_LOG, ModBlocks.STRIPPED_POPLAR_LOG);
 		StrippableBlockRegistry.register(ModBlocks.POPLAR_WOOD, ModBlocks.STRIPPED_POPLAR_WOOD);
 

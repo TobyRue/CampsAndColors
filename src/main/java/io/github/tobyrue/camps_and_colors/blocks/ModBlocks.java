@@ -178,6 +178,24 @@ public class ModBlocks {
                     .pushReaction(PushReaction.DESTROY),
             true);
 
+    public static final Block POPLAR_LEAF_LITTER = register("poplar_leaf_litter", (p) -> new PoplarLeafLitterBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.LEAF_LITTER), true);
+
+    public static final Block RED_POPLAR_LEAF_LITTER = register("red_poplar_leaf_litter", (p) -> new LeafLitterBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.LEAF_LITTER), true);
+    public static final Block ORANGE_POPLAR_LEAF_LITTER = register("orange_poplar_leaf_litter", (p) -> new LeafLitterBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.LEAF_LITTER), true);
+    public static final Block YELLOW_POPLAR_LEAF_LITTER = register("yellow_poplar_leaf_litter", (p) -> new LeafLitterBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.LEAF_LITTER), true);
+
+    public static final Block SMALL_SHELF_MUSHROOM = register("small_shelf_mushroom",
+            (p) -> new ShelfMushroomBlock(p, ShelfMushroomBlock.MushroomType.SMALL),
+            BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY), true);
+    public static final Block BIG_SHELF_MUSHROOM = register("big_shelf_mushroom",
+            (p) -> new ShelfMushroomBlock(p, ShelfMushroomBlock.MushroomType.BIG),
+            BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY), true);
+
+    public static final Block RED_POPLAR_BUSH = register("red_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
+    public static final Block ORANGE_POPLAR_BUSH = register("orange_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
+    public static final Block YELLOW_POPLAR_BUSH = register("yellow_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
+
+
     public static BlockBehaviour.Properties leavesProperties(final SoundType soundType) {
         return BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.2F).randomTicks().sound(soundType).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never).ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never);
     }

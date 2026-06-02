@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "camps_and_colors:item/red_poplar_bush"
+  }
+}

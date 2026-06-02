@@ -45,9 +45,11 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 //        ModBlocks.CONCRETE_STAIRS.values().forEach(this::dropSelf);
 //        ModBlocks.CONCRETE_SLAB.values().forEach(this::createSlabItemTable);
 
-        dropSelf(ModBlocks.RED_POPLAR_SAPLING);
-        dropSelf(ModBlocks.ORANGE_POPLAR_SAPLING);
-        dropSelf(ModBlocks.YELLOW_POPLAR_SAPLING);
+//        dropSelf(ModBlocks.RED_POPLAR_SAPLING);
+//        dropSelf(ModBlocks.ORANGE_POPLAR_SAPLING);
+//        dropSelf(ModBlocks.YELLOW_POPLAR_SAPLING);
+
+
 
         createLeavesDrops(ModBlocks.RED_POPLAR_LEAVES, ModBlocks.RED_POPLAR_SAPLING, 0.1F);
         createLeavesDrops(ModBlocks.ORANGE_POPLAR_LEAVES, ModBlocks.ORANGE_POPLAR_SAPLING, 0.1F);

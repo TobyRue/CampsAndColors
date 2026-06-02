@@ -94,6 +94,17 @@
   "block.camps_and_colors.red_poplar_sapling": "Red Poplar Sapling",
   "block.camps_and_colors.orange_poplar_sapling": "Orange Poplar Sapling",
   "block.camps_and_colors.yellow_poplar_sapling": "Yellow Poplar Sapling",
+  "block.camps_and_colors.poplar_leaf_litter": "Poplar Leaf Litter",
+  "block.camps_and_colors.red_poplar_leaf_litter": "Red Poplar Leaf Litter",
+  "block.camps_and_colors.orange_poplar_leaf_litter": "Orange Poplar Leaf Litter",
+  "block.camps_and_colors.yellow_poplar_leaf_litter": "Yellow Poplar Leaf Litter",
+  "block.camps_and_colors.red_poplar_bush": "Red Poplar Bush",
+  "block.camps_and_colors.orange_poplar_bush": "Orange Poplar Bush",
+  "block.camps_and_colors.yellow_poplar_bush": "Yellow Poplar Bush",
+
+
+  "block.camps_and_colors.small_shelf_mushroom": "Small Shelf Mushroom",
+  "block.camps_and_colors.big_shelf_mushroom": "Big Shelf Mushroom",
 
   "item.camps_and_colors.poplar_sign": "Poplar Sign",
   "item.camps_and_colors.poplar_hanging_sign": "Poplar Hanging Sign",

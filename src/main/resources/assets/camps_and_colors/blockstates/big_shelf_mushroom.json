@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "camps_and_colors:block/big_shelf_mushroom",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "camps_and_colors:block/big_shelf_mushroom",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "camps_and_colors:block/big_shelf_mushroom",
+      "y": 270
+    },
+    "facing=west": {
+      "model": "camps_and_colors:block/big_shelf_mushroom",
+      "y": 90
+    }
+  }
+}

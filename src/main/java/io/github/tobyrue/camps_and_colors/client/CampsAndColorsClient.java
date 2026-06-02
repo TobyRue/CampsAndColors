@@ -52,6 +52,85 @@ public class CampsAndColorsClient implements ClientModInitializer {
         ParticleProviderRegistry.getInstance().register(CampsAndColors.YELLOW_POPLAR_LEAVES_PARTICLE,
                 FallingLeavesParticle.CherryProvider::new);
 
+
+
+
+        BlockColorRegistry.register(List.of(new BlockTintSource() {
+            @Override
+            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                return 0xFFB22C00;
+            }
+
+            @Override
+            public int color(BlockState state) {
+                return 0xFFB22C00;
+            }
+        }), ModBlocks.RED_POPLAR_LEAF_LITTER);
+
+        BlockColorRegistry.register(List.of(new BlockTintSource() {
+            @Override
+            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                return 0xFF874300;
+            }
+
+            @Override
+            public int color(BlockState state) {
+                return 0xFF874300;
+            }
+        }), ModBlocks.ORANGE_POPLAR_LEAF_LITTER);
+
+        BlockColorRegistry.register(List.of(new BlockTintSource() {
+            @Override
+            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+                return 0xFFFDB400;
+            }
+
+            @Override
+            public int color(BlockState state) {
+                return 0xFFFDB400;
+            }
+        }), ModBlocks.YELLOW_POPLAR_LEAF_LITTER);
+
+        BlockColorRegistry.register(List.of(new BlockTintSource() {
+            @Override
+            public int colorInWorld(BlockState state, BlockAndTintGetter level, BlockPos pos) {
+
+                for (int i = 1; i <= 24; i++) {
+                    BlockState aboveState = level.getBlockState(pos.above(i));
+
+                    if (aboveState.is(ModBlocks.RED_POPLAR_LEAVES)) {
+                        return 0xFFB22C00;
+                    } else if (aboveState.is(ModBlocks.ORANGE_POPLAR_LEAVES)) {
+                        return 0xFF874300;
+                    } else if (aboveState.is(ModBlocks.YELLOW_POPLAR_LEAVES)) {
+                        return 0xFFFDB400;
+                    }
+                    if (!aboveState.getCollisionShape(level, pos.above(i)).isEmpty()) {
+                        break;
+                    }
+                }
+
+                double scale = 0.15;
+                double x = pos.getX() * scale;
+                double z = pos.getZ() * scale;
+
+                double noise = Math.sin(x) + Math.sin(z) + Math.sin(x * 0.5 + z * 0.8);
+
+                int choice = (int) Math.floor(Math.abs(noise * 10)) % 3;
+
+                return switch (choice) {
+                    case 0 -> 0xFFB22C00; // Red
+                    case 1 -> 0xFF874300; // Orange
+                    default -> 0xFFFDB400; // Yellow
+                };
+
+            }
+
+            @Override
+            public int color(BlockState state) {
+                return 0xFF874300;
+            }
+        }), ModBlocks.POPLAR_LEAF_LITTER);
     }
 
     private void registerPoplarColor(Block block, int color) {

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 2,
+          "data": {
+            "Name": "camps_and_colors:red_poplar_bush",
+            "Properties": { "segment_amount": "1" }
+          }
+        },
+        {
+          "weight": 3,
+          "data": {
+            "Name": "camps_and_colors:orange_poplar_bush",
+            "Properties": { "segment_amount": "1" }
+          }
+        },
+        {
+          "weight": 4,
+          "data": {
+            "Name": "camps_and_colors:yellow_poplar_bush",
+            "Properties": { "segment_amount": "1" }
+          }
+        }
+      ]
+    }
+  }
+}

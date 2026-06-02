@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "camps_and_colors:block/orange_poplar_bush"
+  }
+}

@@ -8,8 +8,8 @@
     "fog_color": 11057590,
     "water_color": 4159204,
     "water_fog_color": 329011,
-    "grass_color": 14372378,
-    "foliage_color": 11342363,
+    "grass_color": 13394432,
+    "foliage_color": 12673280,
     "mood_sound": {
       "sound": "minecraft:ambient.overworld.forest",
       "tick_delay": 6000,
@@ -40,9 +40,13 @@
   },
   "spawn_costs": {},
   "features": [
-    [ "minecraft:lake_lava_underground" ],
-    [ "minecraft:monster_room" ],
-    [ "camps_and_colors:red_poplar_all_variants_placed", "camps_and_colors:orange_poplar_all_variants_placed", "camps_and_colors:yellow_poplar_all_variants_placed" ],
+    ["minecraft:lake_lava_underground" ],
+    ["minecraft:monster_room" ],
+    ["camps_and_colors:red_poplar_all_variants_placed", "camps_and_colors:orange_poplar_all_variants_placed", "camps_and_colors:yellow_poplar_all_variants_placed" ],
+    ["camps_and_colors:fallen_poplar_log_placed"],
+    ["camps_and_colors:random_poplar_bush_placed"],
+    ["camps_and_colors:mushroom_patch_placed"],
+    ["camps_and_colors:poplar_leaf_litter_patch_placed"],
     [ "minecraft:patch_grass_plain" ]
   ]
 }
