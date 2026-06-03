@@ -1,89 +1,113 @@
 package io.github.tobyrue.camps_and_colors.blocks;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HayBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.block.state.properties.BedPart;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jspecify.annotations.NonNull;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jspecify.annotations.Nullable;
 
-public class StrawBedBlock extends BedBlock {
-    public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;;
-    public static final BooleanProperty OCCUPIED = BlockStateProperties.OCCUPIED;;
+public class StrawBedBlock extends HorizontalDirectionalBlock {
+    public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;
+    public static final BooleanProperty OCCUPIED = BlockStateProperties.OCCUPIED;
+    public static final MapCodec<StrawBedBlock> CODEC = RecordCodecBuilder.mapCodec((i) -> i.group(propertiesCodec()).apply(i, StrawBedBlock::new));
 
     public StrawBedBlock(Properties properties) {
-        super(DyeColor.BROWN, properties);
-        this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(PART, BedPart.FOOT)).setValue(OCCUPIED, false));
+        super(properties);
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(PART, BedPart.FOOT)
+                .setValue(OCCUPIED, false));
     }
+
+    @Override
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
+    }
+
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if (level.isClientSide()) {
-            return InteractionResult.SUCCESS_SERVER;
+        if (level.isClientSide()) return InteractionResult.SUCCESS_SERVER;
+
+        BlockPos headPos = state.getValue(PART) == BedPart.FOOT ? pos.relative(state.getValue(FACING)) : pos;
+        BlockState headState = level.getBlockState(headPos);
+
+        if (!headState.is(this)) return InteractionResult.CONSUME;
+
+        if (headState.getValue(OCCUPIED)) {
+            return InteractionResult.CONSUME;
         } else {
-            if (state.getValue(PART) != BedPart.HEAD) {
-                pos = pos.relative(state.getValue(FACING));
-                state = level.getBlockState(pos);
-                if (!state.is(this)) {
-                    return InteractionResult.CONSUME;
-                }
-            }
+            player.startSleepInBed(headPos).ifLeft(problem -> {
+                if (problem.message() != null) player.sendOverlayMessage(problem.message());
+            });
+            return InteractionResult.SUCCESS;
+        }
+    }
 
-            if (state.getValue(OCCUPIED)) {
-                return InteractionResult.SUCCESS_SERVER;
-            } else {
-                player.startSleepInBed(pos).ifLeft((problem) -> {
-                    if (problem.message() != null) {
-                        player.sendOverlayMessage(problem.message());
-                    }
-                });
-                return InteractionResult.SUCCESS_SERVER;
-            }
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        Direction direction = context.getHorizontalDirection();
+        BlockPos pos = context.getClickedPos();
+        BlockPos headPos = pos.relative(direction);
+
+        if (context.getLevel().getBlockState(headPos).canBeReplaced(context) && context.getLevel().getWorldBorder().isWithinBounds(headPos)) {
+            return this.defaultBlockState().setValue(FACING, direction);
+        }
+        return null;
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, net.minecraft.world.entity.LivingEntity placer, net.minecraft.world.item.ItemStack itemStack) {
+        super.setPlacedBy(level, pos, state, placer, itemStack);
+        if (!level.isClientSide()) {
+            BlockPos headPos = pos.relative(state.getValue(FACING));
+            level.setBlock(headPos, state.setValue(PART, BedPart.HEAD), 3);
         }
     }
 
     @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        super.fallOn(level, state, pos, entity, fallDistance * (double)0.2F);
-    }
-
-    @Override
-    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction direction, BlockPos neighbourPos, BlockState neighbourState, RandomSource random) {
-        if (state.getValue(OCCUPIED) && neighbourState.is(this) && !neighbourState.getValue(OCCUPIED)) {
-            ticks.scheduleTick(pos, this, 1);
+    protected BlockState updateShape(final BlockState state, final LevelReader level, final ScheduledTickAccess ticks, final BlockPos pos, final Direction direction, final BlockPos neighborPos, final BlockState neighborState, final RandomSource random) {
+        Direction neighborDir = getNeighborDirection(state.getValue(PART), state.getValue(FACING));
+        if (direction == neighborDir) {
+            return neighborState.is(this) && neighborState.getValue(PART) != state.getValue(PART)
+                    ? state.setValue(OCCUPIED, neighborState.getValue(OCCUPIED))
+                    : Blocks.AIR.defaultBlockState();
         }
+        return super.updateShape(state, level, ticks, pos, direction, neighborPos, neighborState, random);
+    }
 
-        return super.updateShape(state, level, ticks, pos, direction, neighbourPos, neighbourState, random);
+    private static Direction getNeighborDirection(BedPart part, Direction facing) {
+        return part == BedPart.FOOT ? facing : facing.getOpposite();
+    }
+    private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPE;
     }
 
     @Override
-    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        BlockPos otherPos = pos.relative(getConnectedDirection(state).getOpposite());
-        level.removeBlock(pos, false);
-        if (level.getBlockState(otherPos).is(this)) {
-            level.removeBlock(otherPos, false);
-        }
-    }
-
-    @Override
-    public @NonNull BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new StrawBedBlockEntity(pos, state);
-    }
-
-    protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(new Property[]{FACING, PART, OCCUPIED});
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, PART, OCCUPIED);
     }
 }

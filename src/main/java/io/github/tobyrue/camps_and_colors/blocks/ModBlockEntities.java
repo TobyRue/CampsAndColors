@@ -12,8 +12,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class ModBlockEntities {
 
-    public static final BlockEntityType<StrawBedBlockEntity> STRAW_BED_ENTITY =
-            register("straw_bed_entity", StrawBedBlockEntity::new, ModBlocks.STRAW_BED);
+//    public static final BlockEntityType<StrawBedBlockEntity> STRAW_BED_ENTITY =
+//            register("straw_bed_entity", StrawBedBlockEntity::new, ModBlocks.STRAW_BED);
 
     private static <T extends BlockEntity> BlockEntityType<T> register(
             String name,

@@ -3,7 +3,7 @@
 	"package": "io.github.tobyrue.camps_and_colors.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-		"ExampleMixin"
+      "StrawBedMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

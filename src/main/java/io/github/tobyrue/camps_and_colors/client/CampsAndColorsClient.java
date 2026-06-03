@@ -43,7 +43,7 @@ public class CampsAndColorsClient implements ClientModInitializer {
         registerPoplarColor(ModBlocks.YELLOW_FIREFLY_POPLAR_LEAVES, 0xFFFDB400);
 
 
-        BlockEntityRenderers.register(ModBlockEntities.STRAW_BED_ENTITY, StrawBedRenderer::new);
+//        BlockEntityRenderers.register(ModBlockEntities.STRAW_BED_ENTITY, StrawBedRenderer::new);
 
         ParticleProviderRegistry.getInstance().register(CampsAndColors.RED_POPLAR_LEAVES_PARTICLE,
                 FallingLeavesParticle.CherryProvider::new);
