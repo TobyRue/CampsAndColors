@@ -37,6 +37,7 @@ public class CampsAndColors implements ModInitializer {
 		ModItems.initialize();
 		ModBlockEntities.initialize();
 		ModFeatures.registerFeatures();
+		ModModelLayers.registerModelLayers();
 		StrippableBlockRegistry.register(ModBlocks.POPLAR_LOG, ModBlocks.STRIPPED_POPLAR_LOG);
 		StrippableBlockRegistry.register(ModBlocks.POPLAR_WOOD, ModBlocks.STRIPPED_POPLAR_WOOD);
 

@@ -144,6 +144,19 @@ public class ModBlocks {
     public static final Block ORANGE_POPLAR_LEAVES = register("orange_poplar_leaves", (p) -> new UntintedParticleLeavesBlock(0.1F, CampsAndColors.ORANGE_POPLAR_LEAVES_PARTICLE, p), leavesProperties(SoundType.GRASS), true);
     public static final Block YELLOW_POPLAR_LEAVES = register("yellow_poplar_leaves", (p) -> new UntintedParticleLeavesBlock(0.1F, CampsAndColors.YELLOW_POPLAR_LEAVES_PARTICLE, p), leavesProperties(SoundType.GRASS), true);
 
+    public static final Block RED_FIREFLY_POPLAR_LEAVES = register("red_firefly_poplar_leaves",
+            (p) -> new FireflyLeavesBlock(0.1F, CampsAndColors.RED_POPLAR_LEAVES_PARTICLE, p),
+            leavesProperties(SoundType.GRASS), true);
+
+    public static final Block ORANGE_FIREFLY_POPLAR_LEAVES = register("orange_firefly_poplar_leaves",
+            (p) -> new FireflyLeavesBlock(0.1F, CampsAndColors.ORANGE_POPLAR_LEAVES_PARTICLE, p),
+            leavesProperties(SoundType.GRASS), true);
+
+    public static final Block YELLOW_FIREFLY_POPLAR_LEAVES = register("yellow_firefly_poplar_leaves",
+            (p) -> new FireflyLeavesBlock(0.1F, CampsAndColors.YELLOW_POPLAR_LEAVES_PARTICLE, p),
+            leavesProperties(SoundType.GRASS), true);
+
+
     public static final Block RED_POPLAR_SAPLING = register("red_poplar_sapling",
             (p) -> new SaplingBlock(PoplarTreeGrower.RED, p),
             BlockBehaviour.Properties.of()
@@ -195,6 +208,24 @@ public class ModBlocks {
     public static final Block ORANGE_POPLAR_BUSH = register("orange_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
     public static final Block YELLOW_POPLAR_BUSH = register("yellow_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
 
+
+    public static final Block STRAW_BED = registerStrawBed("straw_bed");
+
+    private static Block registerStrawBed(String name) {
+        ResourceKey<Block> blockKey = keyOfBlock(name);
+        Block block = new StrawBedBlock(BlockBehaviour.Properties.of()
+                .mapColor(MapColor.COLOR_YELLOW)
+                .strength(0.2F)
+                .sound(SoundType.GRASS)
+                .noOcclusion()
+                .setId(blockKey));
+
+        ResourceKey<Item> itemKey = keyOfItem(name);
+        Registry.register(BuiltInRegistries.ITEM, itemKey,
+                new BedItem(block, new Item.Properties().setId(itemKey).stacksTo(16)));
+
+        return Registry.register(BuiltInRegistries.BLOCK, blockKey, block);
+    }
 
     public static BlockBehaviour.Properties leavesProperties(final SoundType soundType) {
         return BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.2F).randomTicks().sound(soundType).noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never).isViewBlocking(Blocks::never).ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never);

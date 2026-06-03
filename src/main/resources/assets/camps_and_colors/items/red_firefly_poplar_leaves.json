@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "camps_and_colors:block/red_firefly_poplar_leaves",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -5100544
+      }
+    ]
+  }
+}

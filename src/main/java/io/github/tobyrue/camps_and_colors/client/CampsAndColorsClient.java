@@ -1,6 +1,8 @@
 package io.github.tobyrue.camps_and_colors.client;
 
 import io.github.tobyrue.camps_and_colors.CampsAndColors;
+import io.github.tobyrue.camps_and_colors.ModModelLayers;
+import io.github.tobyrue.camps_and_colors.blocks.ModBlockEntities;
 import io.github.tobyrue.camps_and_colors.blocks.ModBlocks;
 import io.github.tobyrue.camps_and_colors.entities.ModEntities;
 import net.fabricmc.api.ClientModInitializer;
@@ -8,22 +10,16 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockColorRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockTintsFactory;
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.client.model.object.boat.BoatModel;
-import net.minecraft.client.particle.EndRodParticle;
 import net.minecraft.client.particle.FallingLeavesParticle;
 import net.minecraft.client.renderer.block.BlockAndTintGetter;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.BoatRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
@@ -42,6 +38,12 @@ public class CampsAndColorsClient implements ClientModInitializer {
         registerPoplarColor(ModBlocks.RED_POPLAR_LEAVES, 0xFFB22C00);
         registerPoplarColor(ModBlocks.ORANGE_POPLAR_LEAVES, 0xFFC16100);
         registerPoplarColor(ModBlocks.YELLOW_POPLAR_LEAVES, 0xFFFDB400);
+        registerPoplarColor(ModBlocks.RED_FIREFLY_POPLAR_LEAVES, 0xFFB22C00);
+        registerPoplarColor(ModBlocks.ORANGE_FIREFLY_POPLAR_LEAVES, 0xFFC16100);
+        registerPoplarColor(ModBlocks.YELLOW_FIREFLY_POPLAR_LEAVES, 0xFFFDB400);
+
+
+        BlockEntityRenderers.register(ModBlockEntities.STRAW_BED_ENTITY, StrawBedRenderer::new);
 
         ParticleProviderRegistry.getInstance().register(CampsAndColors.RED_POPLAR_LEAVES_PARTICLE,
                 FallingLeavesParticle.CherryProvider::new);

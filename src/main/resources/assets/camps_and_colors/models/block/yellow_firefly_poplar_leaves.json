@@ -1,0 +1,7 @@
+{
+  "parent": "camps_and_colors:block/cube_emissive",
+  "textures": {
+    "all": "camps_and_colors:block/yellow_poplar_leaves",
+    "emissive": "camps_and_colors:block/firefly_leaves_emissive"
+  }
+}

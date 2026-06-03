@@ -35,10 +35,31 @@
       }
     },
     "foliage_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "camps_and_colors:yellow_poplar_leaves"
-      }
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "weight": 300,
+          "data": {
+            "Name": "camps_and_colors:yellow_poplar_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          }
+        },
+        {
+          "weight": 1,
+          "data": {
+            "Name": "camps_and_colors:yellow_firefly_poplar_leaves",
+            "Properties": {
+              "distance": "7",
+              "persistent": "false",
+              "waterlogged": "false"
+            }
+          }
+        }
+      ]
     },
     "decorators": []
   }

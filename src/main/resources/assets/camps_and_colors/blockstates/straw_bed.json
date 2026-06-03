@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "part=head,facing=north": {
+      "model": "camps_and_colors:block/straw_bed_head"
+    },
+    "part=foot,facing=north": {
+      "model": "camps_and_colors:block/straw_bed_foot"
+    },
+    "part=head,facing=east": {
+      "model": "camps_and_colors:block/straw_bed_head",
+      "y": 90
+    },
+    "part=foot,facing=east": {
+      "model": "camps_and_colors:block/straw_bed_foot",
+      "y": 90
+    },
+    "part=head,facing=south": {
+      "model": "camps_and_colors:block/straw_bed_head",
+      "y": 180
+    },
+    "part=foot,facing=south": {
+      "model": "camps_and_colors:block/straw_bed_foot",
+      "y": 180
+    },
+    "part=head,facing=west": {
+      "model": "camps_and_colors:block/straw_bed_head",
+      "y": 270
+    },
+    "part=foot,facing=west": {
+      "model": "camps_and_colors:block/straw_bed_foot",
+      "y": 270
+    }
+  }
+}
