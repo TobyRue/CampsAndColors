@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.function.Function;
 
+import static net.minecraft.world.level.block.Blocks.flowerPotProperties;
+
 public class ModBlocks {
     private static Block register(String name, Function<BlockBehaviour.Properties, Block> blockFactory, BlockBehaviour.Properties settings, boolean shouldRegisterItem) {
         ResourceKey<Block> blockKey = keyOfBlock(name);
@@ -167,6 +169,7 @@ public class ModBlocks {
                     .sound(SoundType.GRASS)
                     .pushReaction(PushReaction.DESTROY),
             true);
+    public static final Block POTTED_RED_POPLAR_SAPLING = register("potted_red_poplar_sapling", (p) -> new FlowerPotBlock(RED_POPLAR_SAPLING, p), flowerPotProperties(), false);
 
 
     public static final Block ORANGE_POPLAR_SAPLING = register("orange_poplar_sapling",
@@ -179,6 +182,7 @@ public class ModBlocks {
                     .sound(SoundType.GRASS)
                     .pushReaction(PushReaction.DESTROY),
             true);
+    public static final Block POTTED_ORANGE_POPLAR_SAPLING = register("potted_orange_poplar_sapling", (p) -> new FlowerPotBlock(ORANGE_POPLAR_SAPLING, p), flowerPotProperties(), false);
 
     public static final Block YELLOW_POPLAR_SAPLING = register("yellow_poplar_sapling",
             (p) -> new SaplingBlock(PoplarTreeGrower.YELLOW, p),
@@ -190,6 +194,7 @@ public class ModBlocks {
                     .sound(SoundType.GRASS)
                     .pushReaction(PushReaction.DESTROY),
             true);
+    public static final Block POTTED_YELLOW_POPLAR_SAPLING = register("potted_yellow_poplar_sapling", (p) -> new FlowerPotBlock(YELLOW_POPLAR_SAPLING, p), flowerPotProperties(), false);
 
     public static final Block POPLAR_LEAF_LITTER = register("poplar_leaf_litter", (p) -> new PoplarLeafLitterBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.LEAF_LITTER), true);
 
@@ -205,11 +210,17 @@ public class ModBlocks {
             BlockBehaviour.Properties.of().pushReaction(PushReaction.DESTROY), true);
 
     public static final Block RED_POPLAR_BUSH = register("red_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
+    public static final Block POTTED_RED_POPLAR_BUSH = register("potted_red_poplar_bush", (p) -> new FlowerPotBlock(RED_POPLAR_BUSH, p), flowerPotProperties(), false);
     public static final Block ORANGE_POPLAR_BUSH = register("orange_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
+    public static final Block POTTED_ORANGE_POPLAR_BUSH = register("potted_orange_poplar_bush", (p) -> new FlowerPotBlock(ORANGE_POPLAR_BUSH, p), flowerPotProperties(), false);
     public static final Block YELLOW_POPLAR_BUSH = register("yellow_poplar_bush", (p) -> new BushBlock(p), BlockBehaviour.Properties.ofFullCopy(Blocks.BUSH), true);
+    public static final Block POTTED_YELLOW_POPLAR_BUSH = register("potted_yellow_poplar_bush", (p) -> new FlowerPotBlock(YELLOW_POPLAR_BUSH, p), flowerPotProperties(), false);
 
 
     public static final Block STRAW_BED = registerStrawBed("straw_bed");
+
+
+
 
     private static Block registerStrawBed(String name) {
         ResourceKey<Block> blockKey = keyOfBlock(name);
@@ -283,6 +294,38 @@ public class ModBlocks {
             content.insertAfter(Items.PALE_OAK_SHELF, POPLAR_SHELF);
             content.insertAfter(Items.PALE_OAK_HANGING_SIGN, POPLAR_SIGN, POPLAR_HANGING_SIGN);
         });
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register(content -> {
+            content.insertAfter(Items.PALE_OAK_BUTTON,
+                    POPLAR_LOG, POPLAR_WOOD, STRIPPED_POPLAR_LOG, STRIPPED_POPLAR_WOOD,
+                    POPLAR_PLANKS, POPLAR_STAIRS, POPLAR_SLAB, POPLAR_FENCE,
+                    POPLAR_FENCE_GATE, POPLAR_DOOR, POPLAR_TRAPDOOR,
+                    POPLAR_PRESSURE_PLATE, POPLAR_BUTTON);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.NATURAL_BLOCKS).register(content -> {
+            content.insertAfter(Items.PALE_OAK_SAPLING,
+                    RED_POPLAR_SAPLING, ORANGE_POPLAR_SAPLING, YELLOW_POPLAR_SAPLING,
+                    RED_POPLAR_LEAVES, ORANGE_POPLAR_LEAVES, YELLOW_POPLAR_LEAVES,
+                    RED_FIREFLY_POPLAR_LEAVES, ORANGE_FIREFLY_POPLAR_LEAVES, YELLOW_FIREFLY_POPLAR_LEAVES);
+
+            content.insertAfter(Items.BROWN_MUSHROOM,
+                    SMALL_SHELF_MUSHROOM, BIG_SHELF_MUSHROOM);
+
+            content.insertAfter(Items.LEAF_LITTER,
+                    POPLAR_LEAF_LITTER, RED_POPLAR_LEAF_LITTER,
+                    ORANGE_POPLAR_LEAF_LITTER, YELLOW_POPLAR_LEAF_LITTER);
+
+            content.insertAfter(Items.BUSH,
+                    RED_POPLAR_BUSH, ORANGE_POPLAR_BUSH,
+                    YELLOW_POPLAR_BUSH);
+        });
+
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(content -> {
+            content.insertAfter(Items.PALE_OAK_SHELF, POPLAR_SHELF);
+            content.insertAfter(Items.PALE_OAK_HANGING_SIGN, POPLAR_SIGN, POPLAR_HANGING_SIGN);
+
+            content.insertAfter(Items.BLACK_BED, STRAW_BED);
+        });
     }
     public static class PoplarTreeGrower {
         public static final TreeGrower RED = new TreeGrower(
@@ -315,6 +358,7 @@ public class ModBlocks {
                 Optional.empty(),    // flowers
                 Optional.empty()     // secondaryFlowers
         );
+
 
     }
 }

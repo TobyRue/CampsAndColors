@@ -91,31 +91,9 @@ public abstract class StrawBedMixin {
 
                 if (!state.getValue(StrawBedBlock.PERSISTENT)) {
                     level.removeBlock(bedPosition, false);
-                    popResource(level, bedPosition, new ItemStack(ModBlocks.STRAW_BED));
                 }
             }
         });
-    }
-
-    private static void popResource(final Level level, final BlockPos pos, final ItemStack itemStack) {
-        double halfHeight = (double) EntityType.ITEM.getHeight() / (double)2.0F;
-        RandomSource random = level.getRandom();
-        double x = (double)pos.getX() + (double)0.5F + Mth.nextDouble(random, (double)-0.25F, (double)0.25F);
-        double y = (double)pos.getY() + (double)0.5F + Mth.nextDouble(random, (double)-0.25F, (double)0.25F) - halfHeight;
-        double z = (double)pos.getZ() + (double)0.5F + Mth.nextDouble(random, (double)-0.25F, (double)0.25F);
-        popResource(level, (Supplier)(() -> new ItemEntity(level, x, y, z, itemStack)), itemStack);
-    }
-
-    private static void popResource(final Level level, final Supplier<ItemEntity> entityFactory, final ItemStack itemStack) {
-        if (level instanceof ServerLevel serverLevel) {
-            if (!itemStack.isEmpty() && (Boolean)serverLevel.getGameRules().get(GameRules.BLOCK_DROPS)) {
-                ItemEntity entity = (ItemEntity)entityFactory.get();
-                entity.setDefaultPickUpDelay();
-                level.addFreshEntity(entity);
-                return;
-            }
-        }
-
     }
 
 }

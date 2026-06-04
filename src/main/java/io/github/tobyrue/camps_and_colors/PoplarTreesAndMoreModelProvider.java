@@ -14,7 +14,7 @@ public class PoplarTreesAndMoreModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-        blockModelGenerators.createLeafLitter(ModBlocks.POPLAR_LEAF_LITTER);
+//        blockModelGenerators.createLeafLitter(ModBlocks.POPLAR_LEAF_LITTER);
     }
 
     @Override

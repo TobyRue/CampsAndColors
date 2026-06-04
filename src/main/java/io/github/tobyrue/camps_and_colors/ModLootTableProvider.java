@@ -4,8 +4,11 @@ import io.github.tobyrue.camps_and_colors.blocks.ModBlocks;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.storage.loot.LootTable;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
 public class ModLootTableProvider extends FabricBlockLootSubProvider {
 
@@ -49,10 +52,28 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 //        dropSelf(ModBlocks.ORANGE_POPLAR_SAPLING);
 //        dropSelf(ModBlocks.YELLOW_POPLAR_SAPLING);
 
+//        dropPottedContents(ModBlocks.POTTED_RED_POPLAR_BUSH);
+//        dropPottedContents(ModBlocks.POTTED_ORANGE_POPLAR_BUSH);
+//        dropPottedContents(ModBlocks.POTTED_YELLOW_POPLAR_BUSH);
+//        dropPottedContents(ModBlocks.POTTED_RED_POPLAR_SAPLING);
+//        dropPottedContents(ModBlocks.POTTED_ORANGE_POPLAR_SAPLING);
+//        dropPottedContents(ModBlocks.POTTED_YELLOW_POPLAR_SAPLING);
 
 
-        createLeavesDrops(ModBlocks.RED_POPLAR_LEAVES, ModBlocks.RED_POPLAR_SAPLING, 0.1F);
-        createLeavesDrops(ModBlocks.ORANGE_POPLAR_LEAVES, ModBlocks.ORANGE_POPLAR_SAPLING, 0.1F);
-        createLeavesDrops(ModBlocks.YELLOW_POPLAR_LEAVES, ModBlocks.YELLOW_POPLAR_SAPLING, 0.1F);
+
+
+
+//        dropSelf(ModBlocks.STRAW_BED);
+//        createLeavesDrops(ModBlocks.RED_POPLAR_LEAVES, ModBlocks.RED_POPLAR_SAPLING, 0.1F);
+//        createLeavesDrops(ModBlocks.ORANGE_POPLAR_LEAVES, ModBlocks.ORANGE_POPLAR_SAPLING, 0.1F);
+//        createLeavesDrops(ModBlocks.YELLOW_POPLAR_LEAVES, ModBlocks.YELLOW_POPLAR_SAPLING, 0.1F);
+    }
+
+    @Override
+    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> biConsumer) {
+        this.add(ModBlocks.RED_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.RED_POPLAR_BUSH));
+        this.add(ModBlocks.ORANGE_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.ORANGE_POPLAR_BUSH));
+        this.add(ModBlocks.YELLOW_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.YELLOW_POPLAR_BUSH));
+        super.generate(biConsumer);
     }
 }

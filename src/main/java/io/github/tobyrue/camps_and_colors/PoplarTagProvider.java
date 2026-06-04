@@ -37,7 +37,8 @@ public class PoplarTagProvider extends FabricTagsProvider.BlockTagsProvider {
 //        valueLookupBuilder(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.POPLAR_WALL_HANGING_SIGN);
 //        valueLookupBuilder(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.POPLAR_HANGING_SIGN);
 //        valueLookupBuilder(BlockTags.SIGNS).add(ModBlocks.POPLAR_SIGN).add(ModBlocks.POPLAR_WALL_SIGN);
-        valueLookupBuilder(BlockTags.SAPLINGS).add(ModBlocks.RED_POPLAR_SAPLING).add(ModBlocks.ORANGE_POPLAR_SAPLING).add(ModBlocks.YELLOW_POPLAR_SAPLING);
-        valueLookupBuilder(BlockTags.LEAVES).add(ModBlocks.RED_POPLAR_LEAVES).add(ModBlocks.ORANGE_POPLAR_LEAVES).add(ModBlocks.YELLOW_POPLAR_LEAVES);
+//        valueLookupBuilder(BlockTags.SAPLINGS).add(ModBlocks.RED_POPLAR_SAPLING).add(ModBlocks.ORANGE_POPLAR_SAPLING).add(ModBlocks.YELLOW_POPLAR_SAPLING);
+//        valueLookupBuilder(BlockTags.LEAVES).add(ModBlocks.RED_POPLAR_LEAVES).add(ModBlocks.ORANGE_POPLAR_LEAVES).add(ModBlocks.YELLOW_POPLAR_LEAVES);
+        valueLookupBuilder(BlockTags.FLOWER_POTS).add(ModBlocks.POTTED_RED_POPLAR_BUSH, ModBlocks.POTTED_RED_POPLAR_SAPLING, ModBlocks.POTTED_ORANGE_POPLAR_BUSH, ModBlocks.POTTED_ORANGE_POPLAR_SAPLING, ModBlocks.POTTED_YELLOW_POPLAR_BUSH, ModBlocks.POTTED_YELLOW_POPLAR_SAPLING);
     }
 }

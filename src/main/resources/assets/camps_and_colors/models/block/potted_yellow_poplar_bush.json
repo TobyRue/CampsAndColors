@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "camps_and_colors:block/yellow_poplar_bush"
+  }
+}

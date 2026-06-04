@@ -43,7 +43,7 @@
     ["minecraft:lake_lava_underground" ],
     ["minecraft:monster_room" ],
     ["camps_and_colors:red_poplar_all_variants_placed", "camps_and_colors:orange_poplar_all_variants_placed", "camps_and_colors:yellow_poplar_all_variants_placed" ],
-    ["camps_and_colors:fallen_poplar_log_placed"],
+    ["camps_and_colors:fallen_poplar_log_placed", "camps_and_colors:poplar_forest_rock_placed"],
     ["camps_and_colors:random_poplar_bush_placed"],
     ["camps_and_colors:mushroom_patch_placed"],
     ["camps_and_colors:poplar_leaf_litter_patch_placed"],
