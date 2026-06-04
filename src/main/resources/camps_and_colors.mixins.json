@@ -1,14 +1,18 @@
 {
-	"required": true,
-	"package": "io.github.tobyrue.camps_and_colors.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"mixins": [
-      "StrawBedMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
-	}
+  "required": true,
+  "package": "io.github.tobyrue.camps_and_colors.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "ServerPlayerMixin",
+    "StrawBedMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  },
+  "client": [
+    "LivingEntityRendererMixin"
+  ]
 }

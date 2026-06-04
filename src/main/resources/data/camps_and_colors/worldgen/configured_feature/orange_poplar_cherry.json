@@ -21,7 +21,13 @@
         }
       ]
     },
-    "decorators": [],
+    "decorators": [
+      {
+        "type": "camps_and_colors:shelf_mushrooms",
+        "probability": 0.15,
+        "large_probability": 0.25
+      }
+    ],
     "foliage_placer": {
       "type": "minecraft:cherry_foliage_placer",
       "corner_hole_chance": 0.25,

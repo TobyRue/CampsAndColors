@@ -4,14 +4,12 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -29,6 +27,7 @@ import org.jspecify.annotations.Nullable;
 public class StrawBedBlock extends HorizontalDirectionalBlock {
     public static final EnumProperty<BedPart> PART = BlockStateProperties.BED_PART;
     public static final BooleanProperty OCCUPIED = BlockStateProperties.OCCUPIED;
+    public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
     public static final MapCodec<StrawBedBlock> CODEC = RecordCodecBuilder.mapCodec((i) -> i.group(propertiesCodec()).apply(i, StrawBedBlock::new));
 
     public StrawBedBlock(Properties properties) {
@@ -36,7 +35,8 @@ public class StrawBedBlock extends HorizontalDirectionalBlock {
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(PART, BedPart.FOOT)
-                .setValue(OCCUPIED, false));
+                .setValue(OCCUPIED, false)
+                .setValue(PERSISTENT, false));
     }
 
     @Override
@@ -76,6 +76,11 @@ public class StrawBedBlock extends HorizontalDirectionalBlock {
         return null;
     }
 
+    public static @Nullable Direction getBedOrientation(final BlockGetter level, final BlockPos pos) {
+        BlockState blockState = level.getBlockState(pos);
+        return blockState.getBlock() instanceof StrawBedBlock ? (Direction)blockState.getValue(FACING) : null;
+    }
+
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, net.minecraft.world.entity.LivingEntity placer, net.minecraft.world.item.ItemStack itemStack) {
         super.setPlacedBy(level, pos, state, placer, itemStack);
@@ -90,7 +95,7 @@ public class StrawBedBlock extends HorizontalDirectionalBlock {
         Direction neighborDir = getNeighborDirection(state.getValue(PART), state.getValue(FACING));
         if (direction == neighborDir) {
             return neighborState.is(this) && neighborState.getValue(PART) != state.getValue(PART)
-                    ? state.setValue(OCCUPIED, neighborState.getValue(OCCUPIED))
+                    ? state.setValue(OCCUPIED, neighborState.getValue(OCCUPIED)).setValue(PERSISTENT, neighborState.getValue(PERSISTENT))
                     : Blocks.AIR.defaultBlockState();
         }
         return super.updateShape(state, level, ticks, pos, direction, neighborPos, neighborState, random);
@@ -99,15 +104,30 @@ public class StrawBedBlock extends HorizontalDirectionalBlock {
     private static Direction getNeighborDirection(BedPart part, Direction facing) {
         return part == BedPart.FOOT ? facing : facing.getOpposite();
     }
-    private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
+    private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPE;
     }
 
+    public static Direction getConnectedDirection(final BlockState state) {
+        Direction facing = (Direction)state.getValue(FACING);
+        return state.getValue(PART) == BedPart.HEAD ? facing.getOpposite() : facing;
+    }
+
+    @Override
+    protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        BlockPos otherPos = pos.relative(getConnectedDirection(state).getOpposite());
+        level.removeBlock(pos, false);
+        if (level.getBlockState(otherPos).is(this)) {
+            level.removeBlock(otherPos, false);
+        }
+    }
+
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, PART, OCCUPIED);
+        builder.add(FACING, PART, OCCUPIED, PERSISTENT);
     }
 }
