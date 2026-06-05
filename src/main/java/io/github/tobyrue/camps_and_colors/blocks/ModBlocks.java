@@ -326,6 +326,19 @@ public class ModBlocks {
 
             content.insertAfter(Items.BLACK_BED, STRAW_BED);
         });
+
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.RED_POPLAR_SAPLING, 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.ORANGE_POPLAR_SAPLING, 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.YELLOW_POPLAR_SAPLING, 0.3F);
+
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.RED_POPLAR_LEAVES, 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.ORANGE_POPLAR_LEAVES, 0.3F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.YELLOW_POPLAR_LEAVES, 0.3F);
+
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.SMALL_SHELF_MUSHROOM, 0.65F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.BIG_SHELF_MUSHROOM, 0.65F);
+
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.POPLAR_LEAF_LITTER, 0.5F);
     }
     public static class PoplarTreeGrower {
         public static final TreeGrower RED = new TreeGrower(

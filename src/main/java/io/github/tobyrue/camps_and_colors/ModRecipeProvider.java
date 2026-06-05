@@ -4,16 +4,22 @@ import io.github.tobyrue.camps_and_colors.blocks.ModBlocks;
 import io.github.tobyrue.camps_and_colors.items.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -30,49 +36,47 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
+                shaped(RecipeCategory.DECORATIONS, ModBlocks.STRAW_BED)
+                        .define('H', Items.HAY_BLOCK)
+                        .pattern("HHH")
+                        .unlockedBy("has_hay_block", has(Items.HAY_BLOCK))
+                        .save(output);
+
+                // --- DYEING RECIPES ---
                 for (DyeColor color : DyeColor.values()) {
-                    Block wool = ModBlocks.WOOL.get(color);
                     Block woolStairs = ModBlocks.WOOL_STAIRS.get(color);
                     Block woolSlab = ModBlocks.WOOL_SLAB.get(color);
-
-                    Block concrete = ModBlocks.CONCRETE.get(color);
                     Block concreteStairs = ModBlocks.CONCRETE_STAIRS.get(color);
                     Block concreteSlab = ModBlocks.CONCRETE_SLAB.get(color);
+                    Item dye = BuiltInRegistries.ITEM.get(Identifier.fromNamespaceAndPath("minecraft", color.getName() + "_dye")).map(Holder.Reference::value).orElse(Items.AIR);;
 
-                    stairBuilder(woolStairs, Ingredient.of(wool));
-                    slabBuilder(RecipeCategory.BUILDING_BLOCKS, woolSlab, Ingredient.of(wool));
+                    // Dyeing Stairs (8 stairs + 1 dye = 8 dyed stairs)
 
-                    stairBuilder(concreteStairs, Ingredient.of(concrete));
-                    slabBuilder(RecipeCategory.BUILDING_BLOCKS, concreteSlab, Ingredient.of(concrete));
-                    stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, concreteStairs, concrete);
-                    stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, concreteSlab, concrete, 2);
+                    dyeStairOrSlab(output, woolStairs, ModBlocks.WOOL_STAIRS.values(), dye);
+                    dyeStairOrSlab(output, concreteStairs, ModBlocks.CONCRETE_STAIRS.values(), dye);
+
+                    // Dyeing Slabs (8 slabs + 1 dye = 8 dyed slabs)
+                    dyeStairOrSlab(output, woolSlab, ModBlocks.WOOL_SLAB.values(), dye);
+                    dyeStairOrSlab(output, concreteSlab, ModBlocks.CONCRETE_SLAB.values(), dye);
                 }
-
-                planksFromLog(ModBlocks.POPLAR_PLANKS, ItemTags.PLANKS, 4);
-                smeltingResultFromBase(Items.CHARCOAL, ModBlocks.POPLAR_LOG);
-
-
-
-                stairBuilder(ModBlocks.POPLAR_STAIRS, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                slabBuilder(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POPLAR_SLAB, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                fenceBuilder(ModBlocks.POPLAR_FENCE, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                fenceGateBuilder(ModBlocks.POPLAR_FENCE_GATE, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                pressurePlateBuilder(RecipeCategory.REDSTONE, ModBlocks.POPLAR_PRESSURE_PLATE, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                buttonBuilder(ModBlocks.POPLAR_BUTTON, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                shelf(ModBlocks.POPLAR_SHELF, ModBlocks.STRIPPED_POPLAR_LOG);
-                woodenBoat(ModItems.POPLAR_BOAT_ITEM, ModBlocks.POPLAR_PLANKS);
-                chestBoat(ModItems.POPLAR_CHEST_BOAT_ITEM, ModBlocks.POPLAR_PLANKS);
-                woodFromLogs(ModBlocks.POPLAR_WOOD, ModBlocks.POPLAR_LOG);
-                woodFromLogs(ModBlocks.STRIPPED_POPLAR_WOOD, ModBlocks.STRIPPED_POPLAR_LOG);
-                signBuilder(ModBlocks.POPLAR_SIGN, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                hangingSign(ModBlocks.POPLAR_HANGING_SIGN, ModBlocks.POPLAR_PLANKS);
-
-
-                doorBuilder(ModBlocks.POPLAR_DOOR, Ingredient.of(ModBlocks.POPLAR_PLANKS));
-                trapdoorBuilder(ModBlocks.POPLAR_TRAPDOOR, Ingredient.of(ModBlocks.POPLAR_PLANKS));
+            }
+            private void dyeStairOrSlab(RecipeOutput output, Block result, java.util.Collection<Block> ingredients, Item dye) {
+                String group = result.getName().getString().contains("wool") ? "wool_dyeing" : "concrete_dyeing";
+                shaped(RecipeCategory.BUILDING_BLOCKS, result, 8)
+                        .define('#', Ingredient.of(ingredients.stream().map(Block::asItem).toArray(Item[]::new)))
+                        .define('D', dye)
+                        .pattern("###")
+                        .pattern("#D#")
+                        .pattern("###")
+                        .group(group)
+                        .unlockedBy("has_dye", has(dye))
+                        .save(output, String.valueOf(Identifier.fromNamespaceAndPath(CampsAndColors.MOD_ID,
+                                BuiltInRegistries.BLOCK.getKey(result).getPath() + "_dyeing")));
             }
         };
     }
+
+
 
     @Override
     public String getName() {

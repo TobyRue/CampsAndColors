@@ -1,5 +1,6 @@
 package io.github.tobyrue.camps_and_colors;
 
+import io.github.tobyrue.camps_and_colors.biome.ModOverworldRegion;
 import io.github.tobyrue.camps_and_colors.blocks.ModBlockEntities;
 import io.github.tobyrue.camps_and_colors.blocks.ModBlocks;
 import io.github.tobyrue.camps_and_colors.feature.FallenPoplarLogFeature;
@@ -13,13 +14,16 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.biome.OverworldBiomeBuilder;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import terrablender.api.*;
+import terrablender.worldgen.DefaultOverworldRegion;
 
-public class CampsAndColors implements ModInitializer {
+public class CampsAndColors implements ModInitializer, TerraBlenderApi {
 	public static final String MOD_ID = "camps_and_colors";
 
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -49,5 +53,11 @@ public class CampsAndColors implements ModInitializer {
 
 		Registry.register(BuiltInRegistries.PARTICLE_TYPE,
 				Identifier.fromNamespaceAndPath(MOD_ID, "yellow_poplar_leaves"), YELLOW_POPLAR_LEAVES_PARTICLE);
+	}
+
+	@Override
+	public void onTerraBlenderInitialized() {
+//		TerraBlenderApi.super.onTerraBlenderInitialized();
+		Regions.register(new ModOverworldRegion(Identifier.fromNamespaceAndPath(MOD_ID, "overworld"), 8));
 	}
 }

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "concrete_dyeing",
+  "key": {
+    "#": [
+      "camps_and_colors:white_concrete_slab",
+      "camps_and_colors:light_blue_concrete_slab",
+      "camps_and_colors:gray_concrete_slab",
+      "camps_and_colors:light_gray_concrete_slab",
+      "camps_and_colors:yellow_concrete_slab",
+      "camps_and_colors:pink_concrete_slab",
+      "camps_and_colors:orange_concrete_slab",
+      "camps_and_colors:lime_concrete_slab",
+      "camps_and_colors:red_concrete_slab",
+      "camps_and_colors:blue_concrete_slab",
+      "camps_and_colors:green_concrete_slab",
+      "camps_and_colors:magenta_concrete_slab",
+      "camps_and_colors:cyan_concrete_slab",
+      "camps_and_colors:black_concrete_slab",
+      "camps_and_colors:purple_concrete_slab",
+      "camps_and_colors:brown_concrete_slab"
+    ],
+    "D": "minecraft:red_dye"
+  },
+  "pattern": [
+    "###",
+    "#D#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "camps_and_colors:red_concrete_slab"
+  }
+}

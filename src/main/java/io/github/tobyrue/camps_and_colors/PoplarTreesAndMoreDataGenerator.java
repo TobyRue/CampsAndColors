@@ -11,7 +11,7 @@ public class PoplarTreesAndMoreDataGenerator implements DataGeneratorEntrypoint 
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 //		pack.addProvider(PoplarTreesAndMoreModelProvider::new);
-//		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModLootTableProvider::new);
 //		pack.addProvider(PoplarTagProvider::new);
 //		pack.addProvider(ModWorldgenProvider::new);

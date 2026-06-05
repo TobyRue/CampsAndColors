@@ -1,8 +1,8 @@
 {
   "has_precipitation": true,
-  "temperature": 0.2,
+  "temperature": 0.25,
   "downfall": 0.4,
-  "creature_spawn_probability": 0.07,
+  "creature_spawn_probability": 0.08,
   "effects": {
     "sky_color": 10070185,
     "fog_color": 11057590,
@@ -22,20 +22,24 @@
     "minecraft:cave_extra_underground",
     "minecraft:canyon"
   ],
-
   "spawners": {
     "monster": [
       { "type": "minecraft:spider", "weight": 80, "minCount": 4, "maxCount": 4 },
       { "type": "minecraft:zombie", "weight": 95, "minCount": 4, "maxCount": 4 },
-      { "type": "minecraft:skeleton", "weight": 95, "minCount": 4, "maxCount": 4 }
+      { "type": "minecraft:skeleton", "weight": 95, "minCount": 4, "maxCount": 4 },
+      { "type": "minecraft:enderman", "weight": 10, "minCount": 1, "maxCount": 4 }
     ],
     "creature": [
-      { "type": "minecraft:chicken", "weight": 10, "minCount": 2, "maxCount": 4 },
-      { "type": "minecraft:cow", "weight": 8, "minCount": 2, "maxCount": 4 },
-      { "type": "minecraft:pig", "weight": 8, "minCount": 2, "maxCount": 4 },
-      { "type": "minecraft:fox", "weight": 5, "minCount": 1, "maxCount": 2 },
-      { "type": "minecraft:rabbit", "weight": 10, "minCount": 2, "maxCount": 3 },
-      { "type": "minecraft:sheep", "weight": 12, "minCount": 4, "maxCount": 4 }
+      { "type": "minecraft:sheep", "weight": 12, "minCount": 4, "maxCount": 4 },
+      { "type": "minecraft:pig", "weight": 10, "minCount": 4, "maxCount": 4 },
+      { "type": "minecraft:chicken", "weight": 10, "minCount": 4, "maxCount": 4 },
+      { "type": "minecraft:cow", "weight": 8, "minCount": 4, "maxCount": 4 },
+      { "type": "minecraft:wolf", "weight": 5, "minCount": 4, "maxCount": 4 },
+      { "type": "minecraft:fox", "weight": 8, "minCount": 2, "maxCount": 4 },
+      { "type": "minecraft:rabbit", "weight": 4, "minCount": 2, "maxCount": 3 }
+    ],
+    "ambient": [
+      { "type": "minecraft:bat", "weight": 10, "minCount": 8, "maxCount": 8 }
     ]
   },
   "spawn_costs": {},

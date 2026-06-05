@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "H": "minecraft:hay_block"
+  },
+  "pattern": [
+    "HHH"
+  ],
+  "result": {
+    "id": "camps_and_colors:straw_bed"
+  }
+}

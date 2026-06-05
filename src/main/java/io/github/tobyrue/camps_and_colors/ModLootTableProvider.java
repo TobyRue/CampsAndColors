@@ -67,13 +67,15 @@ public class ModLootTableProvider extends FabricBlockLootSubProvider {
 //        createLeavesDrops(ModBlocks.RED_POPLAR_LEAVES, ModBlocks.RED_POPLAR_SAPLING, 0.1F);
 //        createLeavesDrops(ModBlocks.ORANGE_POPLAR_LEAVES, ModBlocks.ORANGE_POPLAR_SAPLING, 0.1F);
 //        createLeavesDrops(ModBlocks.YELLOW_POPLAR_LEAVES, ModBlocks.YELLOW_POPLAR_SAPLING, 0.1F);
+        this.dropSelf(ModBlocks.SMALL_SHELF_MUSHROOM);
+        this.dropSelf(ModBlocks.BIG_SHELF_MUSHROOM);
     }
 
-    @Override
-    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> biConsumer) {
-        this.add(ModBlocks.RED_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.RED_POPLAR_BUSH));
-        this.add(ModBlocks.ORANGE_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.ORANGE_POPLAR_BUSH));
-        this.add(ModBlocks.YELLOW_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.YELLOW_POPLAR_BUSH));
-        super.generate(biConsumer);
-    }
+//    @Override
+//    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> biConsumer) {
+//        this.add(ModBlocks.RED_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.RED_POPLAR_BUSH));
+//        this.add(ModBlocks.ORANGE_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.ORANGE_POPLAR_BUSH));
+//        this.add(ModBlocks.YELLOW_POPLAR_BUSH, createShearsOnlyDrop(ModBlocks.YELLOW_POPLAR_BUSH));
+//        super.generate(biConsumer);
+//    }
 }

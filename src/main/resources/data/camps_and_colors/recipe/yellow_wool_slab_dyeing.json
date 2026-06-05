@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wool_dyeing",
+  "key": {
+    "#": [
+      "camps_and_colors:white_wool_slab",
+      "camps_and_colors:light_blue_wool_slab",
+      "camps_and_colors:gray_wool_slab",
+      "camps_and_colors:light_gray_wool_slab",
+      "camps_and_colors:yellow_wool_slab",
+      "camps_and_colors:pink_wool_slab",
+      "camps_and_colors:orange_wool_slab",
+      "camps_and_colors:lime_wool_slab",
+      "camps_and_colors:red_wool_slab",
+      "camps_and_colors:blue_wool_slab",
+      "camps_and_colors:green_wool_slab",
+      "camps_and_colors:magenta_wool_slab",
+      "camps_and_colors:cyan_wool_slab",
+      "camps_and_colors:black_wool_slab",
+      "camps_and_colors:purple_wool_slab",
+      "camps_and_colors:brown_wool_slab"
+    ],
+    "D": "minecraft:yellow_dye"
+  },
+  "pattern": [
+    "###",
+    "#D#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "camps_and_colors:yellow_wool_slab"
+  }
+}
